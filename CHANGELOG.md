@@ -67,7 +67,8 @@
     - Replaced `chrono` with `time` for logger
 - Removed a bunch of deprecated methods and types:
     - All `_id` methods that were replaced with `_name` equivalent
-    - `BoxView`, `ViewBox`, `SizedView`, `Identifiable`, `Boxable`, `IdView`, `Selector::Id`
+    - `BoxView`, `ViewBox`, `SizedView`, `Identifiable`, `Boxable`, `IdView`,
+      `Selector::Id`
 - Added `set_title` to the `Backend` trait
 - Update dependencies:
     - crossterm to 0.22.1
@@ -116,29 +117,35 @@
 
 ### Breaking Changes
 
-- Backends are now initialized when starting the event loop rather than when creating Cursive.
+- Backends are now initialized when starting the event loop rather than when
+  creating Cursive.
     - As a result initialization and runner functions have changed.
-- `ColorStyle::color` is no longer an optional. Use `ColorType::InheritParent` if needed.
+- `ColorStyle::color` is no longer an optional. Use `ColorType::InheritParent`
+  if needed.
 - Replaced `()` error types with some custom zero-sized types.
 
 ### API updates
 
 - Add `ProgressBar::set_{min,max,range,counter,label}` for non-chained API.
 - Derive Clone, Copy, Debug, PartialEq, Hash for more types.
-- Add backend initializers using other files than /dev/tty for ncurses and termion.
+- Add backend initializers using other files than /dev/tty for ncurses and
+  termion.
 - Add `CursiveRunner` to handle an event loop.
 - `XY<T>` now implements `Default` for `T: Default`.
 - `Style` now implements `FromIterator<&Style>` to merge multiple styles.
 - `XY::stack_{horizontal,vertical}` are now `must_use`.
 - `SpannedString` now implements `FromIterator<SpannedString>`.
 - `view::ScrollBase` is now deprecated in favor of the `view::scroll` module.
-- Add `Finder::call_on_all` and `Cursive::call_on_all_named` to call the same closure of
-  several views with the same type and name.
+- Add `Finder::call_on_all` and `Cursive::call_on_all_named` to call the same
+  closure of several views with the same type and name.
 - Add `SpannedString::remove_spans` to remove spans from a StyledString.
 - Add `SpannedString::compact` to compact the source to only include span content.
-- Add `SpannedString::trim(_{start, end})` to remove the unused prefix, suffix or both of the source.
-- Add `SpannedString::spans(_raw)_attr_mut` to give mutable access to the attribute of the spans.
-- Add `TextContent::with_content` to give mutable access to the `StyledString` of a `TextView`.
+- Add `SpannedString::trim(_{start, end})` to remove the unused prefix, suffix
+  or both of the source.
+- Add `SpannedString::spans(_raw)_attr_mut` to give mutable access to the
+  attribute of the spans.
+- Add `TextContent::with_content` to give mutable access to the `StyledString`
+  of a `TextView`.
 - Add `ColotyType::InheritParent` to carry over the front or back color from the parent.
 - Add `Effect::Blink`.
 - Add `Margins::zeros()`.
